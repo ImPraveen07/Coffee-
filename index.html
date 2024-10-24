@@ -1,44 +1,55 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <p>Choose your move:</p>
+    <button onclick="playGame('rock')">Rock🪨🪨</button>
+    <button onclick="playGame('paper')">Paper📰📰</button>
+    <button onclick="playGame('scissors')">Scissors✂️✂️</button>
 
-<html >
+    <div id="result"></div>
 
-<head >
+    <script>
+        function playGame(userChoice) {
+            const options = ['rock', 'paper', 'scissors'];
+            const computerChoice = options[Math.floor(Math.random() * options.length)];
+            let result = `You chose ${userChoice}, computer chose ${computerChoice}. `;
 
- <title > Terrestrial Planets </title >
+            if (userChoice === computerChoice) {
+                result += "It's a tie!";
+            } else if (
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'scissors' && computerChoice === 'paper') ||
+                (userChoice === 'paper' && computerChoice === 'rock')
+            ) {
+                result += "You win!";
+            } else {
+                result += "You lose!";
+            }
 
- </head >
-
- <body>
-<label for="decade">Favorite Decade:</label>
-
-<input type="number" name="decade" id="decade" min="1950" max="2020"
-
- value="1980" step="1">
-<p></p>
-  </datalist>
- </body>
-
- </html>
-
-
-<label for="coffee">Favorite Coffee:</ label>
-<input type="text" name="coffee"
-id="coffee" list ="coffee-list">
-<datalist id="coffee-list">
-<option value="coffee tharulla "> 
-  <option value="latte podii">
-<option value="espresso kazhuthee">
-  <option value="other onumilaa nokkanda">
- <p>
-  <label for="decade">Favorite Decad:</label>
-
-<input type="number" name="decade" id="decad" min="1950" max="2020"
-
-step="10" value="1980">
-  </datalist>
- </body>
-
- </html>
-
-
-<
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>
